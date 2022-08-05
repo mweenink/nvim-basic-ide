@@ -31,6 +31,21 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
 
+vim.cmd [[
+  augroup templates
+    autocmd!
+    autocmd BufNewFile *.html 0r ~/.config/nvim/skeleton/skeleton.html
+    autocmd BufNewFile *.py 0r ~/.vim/skeleton/skeleton.py
+    autocmd BufNewFile *.c 0r ~/.config/nvim/skeleton/skeleton.c
+  augroup end
+
+  augroup buildsystems
+    autocmd!
+      autocmd FileType c setlocal makeprg=gcc\ -Wall\ -g\ %\ -o\ %<
+      autocmd FileType python setlocal makeprg=python3\ %
+  augroup end
+]]
+
 -- Fixes Autocomment
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()

@@ -5,10 +5,12 @@ end
 
 local servers = {
   "sumneko_lua",
+  "clangd",
   "cssls",
   "clangd",
   "emmet_ls",
   "html",
+  "emmet_ls",
   "tsserver",
   "pyright",
   "bashls",
